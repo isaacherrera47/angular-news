@@ -10,6 +10,9 @@ import {MatSnackBar} from '@angular/material';
 export class HomeComponent implements OnInit, OnDestroy {
   news: any;
   newsSubscription;
+  length: any;
+  pageSize = 8;
+  page = 1;
 
   constructor(private newsService: NewsService, private snackBar: MatSnackBar) {
   }
@@ -19,9 +22,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   getData() {
-    this.newsSubscription = this.newsService.getData('top-headlines?country=us').subscribe(data => {
-      this.news = data;
-    });
+    this.newsSubscription = this.newsService
+      .getData(`top-headlines?country=us&pageSize=${this.pageSize}&page=${this.page}`)
+      .subscribe(data => {
+        this.news = data;
+        this.length = data['totalResults'];
+      });
   }
 
   ngOnDestroy() {
@@ -40,5 +46,15 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.snackBar.open('Favorite added', 'Ok', {
       duration: 3000
     });
+  }
+
+  onPageChange(event) {
+    console.log(event);
+    this.newsSubscription = this.newsService
+      .getData(`top-headlines?country=us&pageSize=${this.pageSize}&page=${event.pageIndex + 1}`)
+      .subscribe(data => {
+        this.news = data;
+        this.length = data['totalResults'];
+      });
   }
 }

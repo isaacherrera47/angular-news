@@ -7,7 +7,7 @@ import {MatSnackBar} from '@angular/material';
   styleUrls: ['./favorites.component.scss']
 })
 export class FavoritesComponent implements OnInit {
-  private articles: any;
+  public articles: any;
 
   constructor(private snackBar: MatSnackBar) {
   }

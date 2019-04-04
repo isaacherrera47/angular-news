@@ -4,7 +4,7 @@ import {
   MatButton,
   MatButtonModule,
   MatCardModule,
-  MatChipsModule, MatProgressSpinnerModule,
+  MatChipsModule, MatPaginatorModule, MatProgressSpinnerModule, MatSelectModule,
   MatSnackBarModule,
   MatToolbar,
   MatToolbarModule
@@ -19,7 +19,9 @@ import {
     MatCardModule,
     MatChipsModule,
     MatSnackBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatPaginatorModule,
+    MatSelectModule
   ],
   exports: [
     MatButton,
@@ -27,7 +29,9 @@ import {
     MatCardModule,
     MatChipsModule,
     MatSnackBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatPaginatorModule,
+    MatSelectModule
   ]
 })
 export class MaterialModule {
